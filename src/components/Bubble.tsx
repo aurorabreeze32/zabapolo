@@ -7,7 +7,8 @@ type Props = {
   children: ReactNode;
   tail?: "left" | "right" | false;
   className?: string;
-  as?: ElementType; // <-- вместо keyof JSX.IntrinsicElements
+  as?: ElementType;
+  size?: "sm" | "md" | "lg"; // <-- добавили, чтобы не падала сборка
 };
 
 export default function Bubble({
@@ -15,9 +16,17 @@ export default function Bubble({
   tail = false,
   className,
   as: Tag = "div",
+  size,
 }: Props) {
   return (
-    <Tag className={clsx("bubble", className, tail && `bubble--${tail}`)}>
+    <Tag
+      className={clsx(
+        "bubble",
+        className,
+        tail && `bubble--${tail}`,
+        size && `bubble--${size}` // безопасно прокидываем модификатор
+      )}
+    >
       {children}
     </Tag>
   );
