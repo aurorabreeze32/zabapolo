@@ -1,4 +1,4 @@
-import Poster, { Slice } from "@/components/Poster";
+import Poster from "@/components/Poster";
 
 export default function Page() {
   return <Poster />;
