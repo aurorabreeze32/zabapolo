@@ -1,22 +1,24 @@
 "use client";
-import clsx from "clsx";
-import type { ReactNode } from "react";
 
+import clsx from "clsx";
+import type { ReactNode, ElementType } from "react";
 
 type Props = {
-children: ReactNode;
-size?: "sm" | "md" | "lg";
-tail?: "left" | "right" | false;
-className?: string;
-as?: keyof JSX.IntrinsicElements;
+  children: ReactNode;
+  tail?: "left" | "right" | false;
+  className?: string;
+  as?: ElementType; // <-- вместо keyof JSX.IntrinsicElements
 };
 
-
-export default function Bubble({ children, size = "md", tail = false, className, as = "div" }: Props){
-const Comp = as as any;
-return (
-<Comp className={clsx("bubble", size, tail && `tail-${tail}`, className)}>
-{children}
-</Comp>
-);
+export default function Bubble({
+  children,
+  tail = false,
+  className,
+  as: Tag = "div",
+}: Props) {
+  return (
+    <Tag className={clsx("bubble", className, tail && `bubble--${tail}`)}>
+      {children}
+    </Tag>
+  );
 }
