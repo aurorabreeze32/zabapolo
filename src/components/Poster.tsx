@@ -26,7 +26,6 @@ const faqData = [
 
 export default function Poster() {
   const [open, setOpen] = useState<number>(0);
-
   const toggle = (i: number) => setOpen((p) => (p === i ? -1 : i));
 
   return (
@@ -80,19 +79,27 @@ export default function Poster() {
           position: absolute;
           left: 50%;
           transform: translateX(-50%);
-          top: 8%;                 /* подстрой при необходимости */
+          top: 8%;                 /* оставил как у тебя */
           width: 90%;
           max-width: 720px;
           pointer-events: none;
         }
         .faq-wrap { pointer-events: auto; }
 
-        /* внешняя обводка у открытого пункта */
+        /* --- внешний контейнер пункта --- */
         .faq-item { border-radius: 18px; }
+
+        /* ОБВОДКА ПЕРЕНЕСЕНА СЮДА (контейнер открытого пункта) */
+        .faq-item.open {
+          border: 3px solid #0ea5e9;
+          border-radius: 18px;
+          box-shadow: 0 2px 0 rgba(14,165,233,.35);
+          /* без паддингов/отступов, чтобы не сбить твои значения */
+        }
 
         /* чтобы не было «двойной» рамки у заголовка, когда открыт */
         .faq-item.open .faq-summary {
-          border: 0;                            /* убрали локальную рамку у заголовка */
+          border: 0;
           box-shadow: none;
           background: #fff;
           border-radius: 14px;
@@ -113,12 +120,12 @@ export default function Poster() {
           cursor: pointer;
         }
         .faq-title {
-    text-transform: uppercase;
-    letter-spacing: .2px;
-    color: #083b73;
-    font-size: max(16px,min(4.6vw,18px));
-    font-weight: 800;
-}
+          text-transform: uppercase;
+          letter-spacing: .2px;
+          color: #083b73;
+          font-size: max(16px,min(4.6vw,18px));
+          font-weight: 800;
+        }
 
         .faq-sign {
           flex: 0 0 auto;
@@ -142,10 +149,10 @@ export default function Poster() {
         .faq-sign.minus::before{ width: 16px; height: 3px; }
         .faq-sign.minus::after { display: none; }
 
-        /* убираем рамку у текста */
+        /* тело — как было у тебя (рамку сняли) */
         .faq-body {
           background: #fff;
-          border: 0;              /* было: 3px solid #0ea5e9 */
+          border: 0;
           border-radius: 12px;
           margin-top: 0px;
           padding: 14px 18px;
@@ -153,9 +160,7 @@ export default function Poster() {
           line-height: 1.35;
         }
 
-        .jsx-edfc7658fa887aac.faq-body {
-    font-size: medium;
-}
+        .jsx-edfc7658fa887aac.faq-body { font-size: medium; }
       `}</style>
     </main>
   );
