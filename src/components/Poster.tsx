@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 
-type Slice = { kind: "img" | "faq"; src: string };
+export type Slice = { kind: "img" | "faq"; src: string };
+
 
 const slices: Slice[] = [
   { kind: "img", src: "/poster/Slice-1.png" },
