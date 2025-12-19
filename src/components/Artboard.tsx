@@ -29,9 +29,15 @@ export default function Artboard() {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
   const slides = useMemo(
-    () => gallery.map((g) => ({ src: g.full, description: g.alt ?? "" })),
+    () =>
+      gallery.map((g: any) =>
+        typeof g === "string"
+          ? { src: g }
+          : { src: g.full, description: g.alt ?? "" }
+      ),
     []
   );
+
 
   // состояние редактора/оверлея
   const [edit, setEdit] = useState(false);
