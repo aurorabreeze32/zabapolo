@@ -106,3 +106,8 @@ img { display: block; max-width: 100%; height: auto; }
   border-color: #2f96e0;
 }
 
+/* где-нибудь в globals.css */
+.yarl__container {
+  backdrop-filter: blur(6px);
+  background: rgba(8,16,24,.6);
+}
