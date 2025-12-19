@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { gallery } from "@/data/gallery";
@@ -31,9 +31,7 @@ const faqData = [
 type HS = {
   id: string;
   left: number; top: number; width: number;
-  /** если указать, используется как есть; если не указать и aspect="square" — высота вычисляется из AR */
   height?: number;
-  /** square для фоток (автоквадрат), rect — обычный прямоугольник */
   aspect?: "square" | "rect";
   action?: string; // gallery:<index> | link:<url>
 };
@@ -49,36 +47,30 @@ const HS_CONFIG_INIT: Record<string, HS[]> = {
     { id: "g-07", left: 37.21649484536083,  top: 56.24125806362302,  width: 18, aspect: "square", action: "gallery:6" },
     { id: "g-08", left: 62.72164948453608,  top: 40.38256873113873,  width: 18, aspect: "square", action: "gallery:7" },
   ],
-
   "/poster/Slice-2.png": [
     { id: "g-09", left: 28.72164948453608,  top: 38.21694606690434,  width: 16, aspect: "square", action: "gallery:8"  },
     { id: "g-10", left: 44.68041237113402,  top: 38.09557763786695,  width: 16, aspect: "square", action: "gallery:9"  },
     { id: "g-11", left: 61.4639175257732,   top: 39.309261928240915, width: 16, aspect: "square", action: "gallery:10" },
   ],
-
   "/poster/Slice-3.png": [
     { id: "g-12", left: 22.742268041237114, top: 33.67017543859649,  width: 16, aspect: "square", action: "gallery:11" },
     { id: "g-13", left: 41.79381443298969,  top: 35.37684210526316,  width: 16, aspect: "square", action: "gallery:12" },
     { id: "g-14", left: 59.608247422680414, top: 35.55649122807017,  width: 16, aspect: "square", action: "gallery:13" },
   ],
-
   "/poster/Slice-4.png": [
     { id: "link-ig", left: 47.1958762886598,   top: 19.925279760331307, width: 32, height: 5, aspect: "rect", action: "link:https://instagram.com/zabapolo" },
     { id: "link-wa", left: 44.927835051546396, top: 25.27288747907304,  width: 32, height: 5, aspect: "rect", action: "link:https://wa.me/48XXXXXXXXX" },
   ],
-
   "/poster/Slice-5.png": [
     { id: "g-15", left: 30.948453608247423, top: 0.48847225741069167, width: 12, aspect: "square", action: "gallery:14" },
     { id: "g-16", left: 52.01030927835052,  top: 0.08310108943501504, width: 12, aspect: "square", action: "gallery:15" },
     { id: "g-17", left: 75.54639175257732,  top: 40.70129212059792,   width: 12, aspect: "square", action: "gallery:16" },
     { id: "g-18", left: 81.96907216494846,  top: 49.619457816062834,  width: 12, aspect: "square", action: "gallery:17" },
     { id: "g-19", left: 80.55670103092784,  top: 60.80770205219154,   width: 12, aspect: "square", action: "gallery:18" },
-
     { id: "link-tg",   left: 32,               top: 78,                width: 36, height: 5, aspect: "rect", action: "link:https://t.me/USERNAME" },
     { id: "link-mail", left: 33.855670103092784, top: 82.89232328350646, width: 36, height: 5, aspect: "rect", action: "link:mailto:info@zabapolo.pl" },
   ],
 };
-
 /* ============================ */
 
 export default function Poster() {
@@ -110,7 +102,6 @@ export default function Poster() {
     return () => window.removeEventListener("keydown", onKey);
   }, [edit, hs]);
 
-  /* ---- helpers ---- */
   const onHotspotClick = (action?: string) => {
     if (!action) return;
     if (action.startsWith("gallery:")) {
@@ -122,7 +113,7 @@ export default function Poster() {
     }
   };
 
-  // map: src -> aspectRatio (H/W)
+  // src -> (height/width) AR
   const [ratios, setRatios] = useState<Record<string, number>>({});
   const onImageLoad = (src: string, img: HTMLImageElement) => {
     if (!img.naturalWidth || !img.naturalHeight) return;
@@ -140,7 +131,7 @@ export default function Poster() {
         {items.map((h, i) => {
           const heightPercent =
             h.aspect === "square"
-              ? (ar ? h.width / ar : h.width) // квадрат по ширине; если AR ещё нет — временно 1:1
+              ? (ar ? h.width / ar : h.width)
               : (h.height ?? 10);
 
           return (
@@ -202,7 +193,6 @@ export default function Poster() {
       {slices.map((s, idx) => {
         if (s.kind === "img") {
           const imgRef = useRef<HTMLImageElement | null>(null);
-
           return (
             <section key={idx} className="section relative">
               <img
@@ -254,18 +244,15 @@ export default function Poster() {
         index={lbIndex}
         close={() => setLbOpen(false)}
         slides={gallery.map((src) => ({ src }))}
-
-        // 👇 делаем фон светлее + размытие заднего плана
         styles={{
           container: {
-            backgroundColor: "rgba(8, 20, 40, 0.22)", // меньше чёрного
+            backgroundColor: "rgba(8, 20, 40, 0.22)",
             backdropFilter: "blur(5px)",
-            WebkitBackdropFilter: "blur(5px)",       // Safari
+            WebkitBackdropFilter: "blur(5px)",
             transition: "backdrop-filter .2s ease, background-color .2s ease",
           },
         }}
       />
-
 
       {/* Стили (FAQ оставил как у тебя) */}
       <style jsx global>{`
@@ -346,7 +333,7 @@ export default function Poster() {
           margin-top: 0px;
           padding: 14px 18px;
           color: #083b73;
-          font-size: clamp(16px, 4.8vw, 19px); /* ↑ только тело, не заголовок */
+          font-size: clamp(16px, 4.8vw, 19px); /* увеличили только тело */
           line-height: 1.45;
         }
         .jsx-edfc7658fa887aac.faq-body { font-size: medium; }
