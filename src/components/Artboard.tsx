@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 
-import gallery from "@/data/gallery";
+import { gallery } from "@/data/gallery";
 import Bubble from "@/components/Bubble";
 import { BASE_W, BASE_H, layers as initialLayers, type Layer } from "@/data/scene";
 
