@@ -243,7 +243,10 @@ export default function Poster() {
         open={lbOpen}
         index={lbIndex}
         close={() => setLbOpen(false)}
-        slides={gallery.map((src) => ({ src }))}
+        // приводим любой формат галереи к строковому src
+        slides={(gallery as any[]).map((g) => ({
+          src: typeof g === "string" ? g : g.full,
+        }))}
         styles={{
           container: {
             backgroundColor: "rgba(8, 20, 40, 0.22)",
@@ -253,6 +256,7 @@ export default function Poster() {
           },
         }}
       />
+
 
       {/* Стили (FAQ оставил как у тебя) */}
       <style jsx global>{`
