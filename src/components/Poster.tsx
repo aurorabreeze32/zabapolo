@@ -38,12 +38,12 @@ type HS = {
 
 const HS_CONFIG_INIT: Record<string, HS[]> = {
   "/poster/Slice-1.png": [
-    { id: "g-01", left: 28.68041237113402, top: 20.015005952545753, width: 18, aspect: "square", action: "gallery:0" },
+    { id: "g-01", left: 29.70500253506845, top: 19.398647694308153, width: 18, aspect: "square", action: "gallery:0" },
     { id: "g-02", left: 51.50515463917526, top: 19.926409922755337, width: 18, aspect: "square", action: "gallery:1" },
-    { id: "g-03", left: 22.164948453608247, top: 40.12630471496996,  width: 18, aspect: "square", action: "gallery:2" },
-    { id: "g-04", left: 41.69072164948454, top: 39.506132506437055,  width: 18, aspect: "square", action: "gallery:3" },
-    { id: "g-05", left: 4.144329896907216,  top: 58.899138957335474,  width: 18, aspect: "square", action: "gallery:4" },
-    { id: "g-06", left: 20.783505154639176, top: 57.304410421108,     width: 18, aspect: "square", action: "gallery:5" },
+    { id: "g-03", left: 22.164948453608247, top: 40.12630471496996, width: 18, aspect: "square", action: "gallery:2" },
+    { id: "g-04", left: 41.69072164948454, top: 39.506132506437055, width: 18, aspect: "square", action: "gallery:3" },
+    { id: "g-05", left: 4.144329896907216,  top: 58.899138957335474, width: 18, aspect: "square", action: "gallery:4" },
+    { id: "g-06", left: 20.783505154639176, top: 57.304410421108,    width: 18, aspect: "square", action: "gallery:5" },
     { id: "g-07", left: 37.21649484536083,  top: 56.24125806362302,  width: 18, aspect: "square", action: "gallery:6" },
     { id: "g-08", left: 62.72164948453608,  top: 40.38256873113873,  width: 18, aspect: "square", action: "gallery:7" },
   ],
@@ -67,10 +67,11 @@ const HS_CONFIG_INIT: Record<string, HS[]> = {
     { id: "g-17", left: 75.54639175257732,  top: 40.70129212059792,   width: 12, aspect: "square", action: "gallery:16" },
     { id: "g-18", left: 81.96907216494846,  top: 49.619457816062834,  width: 12, aspect: "square", action: "gallery:17" },
     { id: "g-19", left: 80.55670103092784,  top: 60.80770205219154,   width: 12, aspect: "square", action: "gallery:18" },
-    { id: "link-tg",   left: 32,               top: 78,                width: 36, height: 5, aspect: "rect", action: "link:https://t.me/USERNAME" },
+    { id: "link-tg",   left: 32,               top: 78,                 width: 36, height: 5, aspect: "rect", action: "link:https://t.me/USERNAME" },
     { id: "link-mail", left: 33.855670103092784, top: 82.89232328350646, width: 36, height: 5, aspect: "rect", action: "link:mailto:info@zabapolo.pl" },
   ],
 };
+
 /* ============================ */
 
 export default function Poster() {
