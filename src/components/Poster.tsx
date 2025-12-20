@@ -309,6 +309,7 @@ export default function Poster() {
           gap: 12px;
           box-shadow: 0 2px 0 rgba(14,165,233,.35);
           cursor: pointer;
+          line-height: 8px;
         }
         .faq-title {
           text-transform: uppercase;
