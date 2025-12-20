@@ -73,7 +73,7 @@ const HS_CONFIG_INIT: Record<string, HS[]> = {
     { id: "g-19", left: 77.16686880095303,  top: 45.23681215611568,  width: 12, aspect: "square", action: "gallery:18" },
 
     { id: "link-tg",   left: 32,                 top: 78,                width: 36, height: 5, aspect: "rect", action: "link:https://t.me/pilkawodna" },
-    { id: "link-mail", left: 33.855670103092784, top: 82.89232328350646, width: 36, height: 5, aspect: "rect", action: "link:mailto:info@zabapolo.pl" },
+    { id: "link-mail", left: 33.855670103092784, top: 82.89232328350646, width: 36, height: 5, aspect: "rect", action: "link:https://wa.me/48518367836" },
   ],
 };
 
