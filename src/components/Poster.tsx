@@ -38,39 +38,45 @@ type HS = {
 
 const HS_CONFIG_INIT: Record<string, HS[]> = {
   "/poster/Slice-1.png": [
-    { id: "g-01", left: 29.70500253506845, top: 19.398647694308153, width: 18, aspect: "square", action: "gallery:0" },
-    { id: "g-02", left: 51.50515463917526, top: 19.926409922755337, width: 18, aspect: "square", action: "gallery:1" },
-    { id: "g-03", left: 22.164948453608247, top: 40.12630471496996, width: 18, aspect: "square", action: "gallery:2" },
-    { id: "g-04", left: 41.69072164948454, top: 39.506132506437055, width: 18, aspect: "square", action: "gallery:3" },
-    { id: "g-05", left: 4.144329896907216,  top: 58.899138957335474, width: 18, aspect: "square", action: "gallery:4" },
-    { id: "g-06", left: 20.783505154639176, top: 57.304410421108,    width: 18, aspect: "square", action: "gallery:5" },
-    { id: "g-07", left: 37.21649484536083,  top: 56.24125806362302,  width: 18, aspect: "square", action: "gallery:6" },
-    { id: "g-08", left: 62.72164948453608,  top: 40.38256873113873,  width: 18, aspect: "square", action: "gallery:7" },
+    { id: "g-01", left: 29.09025156350883,  top: 27.44065634034929,  width: 18, aspect: "square", action: "gallery:0" },
+    { id: "g-02", left: 52.583736082523096, top: 27.01066751765411,  width: 18, aspect: "square", action: "gallery:1" },
+    { id: "g-03", left: 22.010865843703705, top: 45.75398839522629,  width: 18, aspect: "square", action: "gallery:2" },
+    { id: "g-04", left: 42.30705632112411,  top: 45.79589854509078,  width: 18, aspect: "square", action: "gallery:3" },
+    { id: "g-05", left: 61.61736663042994,  top: 45.85615468452373,  width: 18, aspect: "square", action: "gallery:4" },
+    { id: "g-06", left: 4.142518746622372,  top: 63.99142223788426,  width: 18, aspect: "square", action: "gallery:5" },
+    { id: "g-07", left: 20.575511611360092, top: 62.06756463294061,  width: 18, aspect: "square", action: "gallery:6" },
+    { id: "g-08", left: 37.14383255585791,  top: 60.57602065314697,  width: 18, aspect: "square", action: "gallery:7" },
   ],
+
   "/poster/Slice-2.png": [
     { id: "g-09", left: 28.72164948453608,  top: 38.21694606690434,  width: 16, aspect: "square", action: "gallery:8"  },
     { id: "g-10", left: 44.68041237113402,  top: 38.09557763786695,  width: 16, aspect: "square", action: "gallery:9"  },
     { id: "g-11", left: 61.4639175257732,   top: 39.309261928240915, width: 16, aspect: "square", action: "gallery:10" },
   ],
+
   "/poster/Slice-3.png": [
-    { id: "g-12", left: 22.742268041237114, top: 33.67017543859649,  width: 16, aspect: "square", action: "gallery:11" },
-    { id: "g-13", left: 41.79381443298969,  top: 35.37684210526316,  width: 16, aspect: "square", action: "gallery:12" },
-    { id: "g-14", left: 59.608247422680414, top: 35.55649122807017,  width: 16, aspect: "square", action: "gallery:13" },
+    { id: "g-12", left: 22.434102821428038, top: 37.29494457637754,  width: 16, aspect: "square", action: "gallery:11" },
+    { id: "g-13", left: 41.947898100899586, top: 37.79335486378386,  width: 16, aspect: "square", action: "gallery:12" },
+    { id: "g-14", left: 60.37866576222988,  top: 38.375755498460016, width: 16, aspect: "square", action: "gallery:13" },
   ],
+
   "/poster/Slice-4.png": [
     { id: "link-ig", left: 47.1958762886598,   top: 19.925279760331307, width: 32, height: 5, aspect: "rect", action: "link:https://instagram.com/zabapolo" },
     { id: "link-wa", left: 44.927835051546396, top: 25.27288747907304,  width: 32, height: 5, aspect: "rect", action: "link:https://wa.me/48XXXXXXXXX" },
   ],
+
   "/poster/Slice-5.png": [
-    { id: "g-15", left: 30.948453608247423, top: 0.48847225741069167, width: 12, aspect: "square", action: "gallery:14" },
-    { id: "g-16", left: 52.01030927835052,  top: 0.08310108943501504, width: 12, aspect: "square", action: "gallery:15" },
-    { id: "g-17", left: 75.54639175257732,  top: 40.70129212059792,   width: 12, aspect: "square", action: "gallery:16" },
-    { id: "g-18", left: 81.96907216494846,  top: 49.619457816062834,  width: 12, aspect: "square", action: "gallery:17" },
-    { id: "g-19", left: 80.55670103092784,  top: 60.80770205219154,   width: 12, aspect: "square", action: "gallery:18" },
-    { id: "link-tg",   left: 32,               top: 78,                 width: 36, height: 5, aspect: "rect", action: "link:https://t.me/USERNAME" },
+    { id: "g-15", left: 32.79745339114472,  top: 2.7301943327838387, width: 12, aspect: "square", action: "gallery:14" },
+    { id: "g-16", left: 52.780727617899984, top: 1.718953413026254,  width: 12, aspect: "square", action: "gallery:15" },
+    { id: "g-17", left: 75.54639175257732,  top: 45.06356498350789,  width: 12, aspect: "square", action: "gallery:16" },
+    { id: "g-18", left: 81.96907216494846,  top: 53.1940990032113,   width: 12, aspect: "square", action: "gallery:17" },
+    { id: "g-19", left: 79.94036635928826,  top: 62.14061949989182,  width: 12, aspect: "square", action: "gallery:18" },
+
+    { id: "link-tg",   left: 32,                 top: 78,                width: 36, height: 5, aspect: "rect", action: "link:https://t.me/USERNAME" },
     { id: "link-mail", left: 33.855670103092784, top: 82.89232328350646, width: 36, height: 5, aspect: "rect", action: "link:mailto:info@zabapolo.pl" },
   ],
 };
+
 
 /* ============================ */
 
