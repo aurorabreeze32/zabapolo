@@ -436,6 +436,7 @@ export default function Poster() {
           color: #083b73;
           font-size: clamp(16px, 4.8vw, 19px);
           line-height: 1.45;
+          white-space: pre-line;
         }
 
         /* Hotspots */
