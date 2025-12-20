@@ -314,7 +314,7 @@ export default function Poster() {
           text-transform: uppercase;
           letter-spacing: .2px;
           color: #083b73;
-          font-size: max(16px,min(4.6vw,18px));
+          font-size: max(16px,min(4.6vw,16px));
           font-weight: 800;
         }
         .faq-sign {
