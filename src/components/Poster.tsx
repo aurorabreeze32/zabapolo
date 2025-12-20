@@ -276,7 +276,7 @@ export default function Poster() {
           position: absolute;
           left: 50%;
           transform: translateX(-50%);
-          top: 8%;
+          top: 7%;
           width: 95%;
           max-width: 720px;
           pointer-events: none;
