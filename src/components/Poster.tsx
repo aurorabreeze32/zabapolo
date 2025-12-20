@@ -1,35 +1,34 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { gallery } from "@/data/gallery";
+import type { SlideImage } from "yet-another-react-lightbox";
 
 export type Slice = { kind: "img" | "faq"; src: string };
 
 const slices: Slice[] = [
-  { kind: "img", src: "/poster/Slice-1.png" },   // 1) 8 фото-хотспотов (квадраты)
-  { kind: "img", src: "/poster/Slice-2.png" },   // 2) 3 фото
-  { kind: "img", src: "/poster/Slice-3.png" },   // 3) 3 фото
-  { kind: "img", src: "/poster/Slice-4.png" },   // 4) IG / WhatsApp (горизонтальные)
-  { kind: "faq", src: "/poster/Slice-6-1.png" }, // 5) FAQ
-  { kind: "img", src: "/poster/Slice-5.png" },   // 6) 5 фото + 2 контакта (горизонтальные)
+  { kind: "img", src: "/poster/Slice-1.png" },
+  { kind: "img", src: "/poster/Slice-2.png" },
+  { kind: "img", src: "/poster/Slice-3.png" },
+  { kind: "img", src: "/poster/Slice-4.png" },
+  { kind: "faq", src: "/poster/Slice-6-1.png" }, // FAQ поверх фона Slice-6-1 (фон повторяется по Y)
+  { kind: "img", src: "/poster/Slice-5.png" },
 ];
 
 const faqData = [
-  {
-    q: "Группы. Запись на тренировку",
-    a: `Мы формируем группы с учётом возраста ребёнка. Такой подход помогает каждому ребёнку чувствовать себя комфортно, быстрее осваивать технику и развиваться в своём темпе.
+  { q: "Группы. Запись на тренировку", a:
+`Мы формируем группы с учётом возраста ребёнка. Такой подход помогает каждому ребёнку чувствовать себя комфортно, быстрее осваивать технику и развиваться в своём темпе.
 
 Занятия проходят в игровой форме: дети учатся не бояться воды, осваивают базовые движения, правильное дыхание и простые упражнения на воде.
 
 Как записаться
+Оставьте заявку на сайте или свяжитесь с нами по телефону — мы подберём для вас подходящее время и оптимальную группу для тренировок.
+Запись в группы открыта круглый год.` },
 
-Оставьте заявку на сайте или свяжитесь с нами по телефону — мы подберём для вас подходящее время и оптимальную группу для тренировок. Запись в группы открыта круглый год.`
-  },
-  {
-    q: "Прайс-лист. Цены на 2026 год",
-    a: `Пробная тренировка в группе: 20 злотых
+  { q: "Прайс-лист. Цены на 2026 год", a:
+`Пробная тренировка в группе: 20 злотых
 Разовое занятие в группе: 50 злотых
 
 Абонементы:
@@ -47,43 +46,37 @@ const faqData = [
 10% скидка предоставляется:
 • многодетным семьям;
 • неполным семьям;
-• на второй абонемент при занятиях двух детей из семьи
-• детям из Беларуси и Украины.`
-  },
-  {
-    q: "Отмена и перенос занятий",
-    a: `Если вы оплатили занятие и по какой-либо причине не смогли прийти, возможность переноса обсуждается индивидуально с тренером. Это необходимо для того, чтобы ребёнок чувствовал себя комфортно на тренировках, так как по мере обучения дети переходят к более сложным упражнениям.
+• на второй абонемент при занятиях двух детей из семьи;
+• детям из Беларуси и Украины.` },
+
+  { q: "Отмена и перенос занятий", a:
+`Если вы оплатили занятие и по какой-либо причине не смогли прийти, возможность переноса обсуждается индивидуально с тренером. Это необходимо для того, чтобы ребёнок чувствовал себя комфортно на тренировках, так как по мере обучения дети переходят к более сложным упражнениям.
 
 В случае длительного отсутствия мы можем предложить перевод ребёнка в другую группу, соответствующую его текущему уровню подготовки.
 
-Обратите внимание: перенос возможен только по согласованию. Возврат денежных средств не осуществляется.`
-  },
-  {
-    q: "Как происходит оплата?",
-    a: `Оплата производится до тренировки путём карточного перевода на расчётный счёт.`
-  },
-  {
-    q: "Что нужно иметь с собой",
-    a: `Для занятий необходимо взять:
+Обратите внимание: перенос возможен только по согласованию. Возврат денежных средств не осуществляется.` },
+
+  { q: "Как происходит оплата?", a:
+`Оплата производится до тренировки путём карточного перевода на расчётный счёт.` },
+
+  { q: "Что нужно иметь с собой", a:
+`Для занятий необходимо взять:
 • полотенце;
 • плавки или купальник;
 • шапочку для плавания;
 • плавательные очки;
 • тапочки;
-• мыло и мочалку.`
-  },
-  {
-    q: "Документы",
-    a: `Список необходимых документов:
+• мыло и мочалку.` },
+
+  { q: "Документы", a:
+`Список необходимых документов:
 • заявление на участие ребёнка в занятиях;
 • медицинская справка о допуске к занятиям плаванием;
 • копия свидетельства о рождении ребёнка;
-• страховой полис (если требуется).`
-  },
-  {
-    q: "Игровой день для детей и родителей",
-    a: `По субботам и воскресеньям мы проводим игровую тренировку, где вы можете играть со своим ребёнком в одной команде в водное поло в мелком бассейне с тёплой водой против других детей и родителей, или можно просто наблюдать за игрой с бортика.`
-  }
+• страховой полис (если требуется).` },
+
+  { q: "Игровой день для детей и родителей", a:
+`По субботам и воскресеньям мы проводим игровую тренировку, где вы можете играть со своим ребёнком в одной команде в водное поло в мелком бассейне с тёплой водой против других детей и родителей, или можно просто наблюдать за игрой с бортика.` },
 ];
 
 /* ========= Хотспоты ========= */
@@ -97,26 +90,26 @@ type HS = {
 
 const HS_CONFIG_INIT: Record<string, HS[]> = {
   "/poster/Slice-1.png": [
-    { id: "g-01", left: 29.09025156350883,  top: 27.44065634034929,  width: 18, aspect: "square", action: "gallery:0" },
-    { id: "g-02", left: 52.583736082523096, top: 27.01066751765411,  width: 18, aspect: "square", action: "gallery:1" },
-    { id: "g-03", left: 42.81209964722873,  top: 45.75398839522629,  width: 18, aspect: "square", action: "gallery:2" },
-    { id: "g-04", left: 61.72153922947079,  top: 45.663482073411295, width: 18, aspect: "square", action: "gallery:3" },
-    { id: "g-05", left: 22.033899179284084, top: 45.78994644868399,  width: 18, aspect: "square", action: "gallery:4" },
-    { id: "g-06", left: 36.65407428111186,  top: 60.74722777402676,  width: 18, aspect: "square", action: "gallery:5" },
-    { id: "g-07", left: 20.575511611360092, top: 62.06756463294061,  width: 18, aspect: "square", action: "gallery:6" },
-    { id: "g-08", left: 4.786361747283664,  top: 63.95263158868394,  width: 18, aspect: "square", action: "gallery:7" },
+    { id: "g-01", left: 29.09025156350883, top: 27.44065634034929, width: 18, aspect: "square", action: "gallery:0" },
+    { id: "g-02", left: 52.583736082523096, top: 27.01066751765411, width: 18, aspect: "square", action: "gallery:1" },
+    { id: "g-03", left: 42.81209964722873, top: 45.75398839522629, width: 18, aspect: "square", action: "gallery:2" },
+    { id: "g-04", left: 61.72153922947079, top: 45.663482073411295, width: 18, aspect: "square", action: "gallery:3" },
+    { id: "g-05", left: 22.033899179284084, top: 45.78994644868399, width: 18, aspect: "square", action: "gallery:4" },
+    { id: "g-06", left: 36.65407428111186, top: 60.74722777402676, width: 18, aspect: "square", action: "gallery:5" },
+    { id: "g-07", left: 20.575511611360092, top: 62.06756463294061, width: 18, aspect: "square", action: "gallery:6" },
+    { id: "g-08", left: 4.786361747283664, top: 63.95263158868394, width: 18, aspect: "square", action: "gallery:7" },
   ],
 
   "/poster/Slice-2.png": [
-    { id: "g-09", left: 28.72164948453608,  top: 38.21694606690434,  width: 16, aspect: "square", action: "gallery:8"  },
-    { id: "g-10", left: 44.68041237113402,  top: 38.09557763786695,  width: 16, aspect: "square", action: "gallery:9"  },
-    { id: "g-11", left: 61.4639175257732,   top: 39.309261928240915, width: 16, aspect: "square", action: "gallery:10" },
+    { id: "g-09", left: 28.72164948453608, top: 38.21694606690434, width: 16, aspect: "square", action: "gallery:8"  },
+    { id: "g-10", left: 44.68041237113402, top: 38.09557763786695, width: 16, aspect: "square", action: "gallery:9"  },
+    { id: "g-11", left: 61.4639175257732,  top: 39.309261928240915, width: 16, aspect: "square", action: "gallery:10" },
   ],
 
   "/poster/Slice-3.png": [
-    { id: "g-12", left: 42.00267151369533,  top: 37.56344681339225,  width: 16, aspect: "square", action: "gallery:11" },
-    { id: "g-13", left: 59.205218122550605, top: 38.53173417192139,  width: 16, aspect: "square", action: "gallery:12" },
-    { id: "g-14", left: 21.703779381424972, top: 37.97300583024379,  width: 16, aspect: "square", action: "gallery:13" },
+    { id: "g-12", left: 42.00267151369533, top: 37.56344681339225, width: 16, aspect: "square", action: "gallery:11" },
+    { id: "g-13", left: 59.205218122550605, top: 38.53173417192139, width: 16, aspect: "square", action: "gallery:12" },
+    { id: "g-14", left: 21.703779381424972, top: 37.97300583024379, width: 16, aspect: "square", action: "gallery:13" },
   ],
 
   "/poster/Slice-4.png": [
@@ -125,18 +118,15 @@ const HS_CONFIG_INIT: Record<string, HS[]> = {
   ],
 
   "/poster/Slice-5.png": [
-    { id: "g-15", left: 32.79745339114472,  top: 2.7301943327838387, width: 12, aspect: "square", action: "gallery:14" },
+    { id: "g-15", left: 32.79745339114472, top: 2.7301943327838387, width: 12, aspect: "square", action: "gallery:14" },
     { id: "g-16", left: 52.780727617899984, top: 1.718953413026254,  width: 12, aspect: "square", action: "gallery:15" },
-    { id: "g-17", left: 80.16888909380987,  top: 62.57324041499089,  width: 12, aspect: "square", action: "gallery:16" },
-    { id: "g-18", left: 81.96907216494846,  top: 53.1940990032113,   width: 12, aspect: "square", action: "gallery:17" },
-    { id: "g-19", left: 77.16686880095303,  top: 45.23681215611568,  width: 12, aspect: "square", action: "gallery:18" },
-
-    { id: "link-tg",   left: 32,                 top: 78,                width: 36, height: 5, aspect: "rect", action: "link:https://t.me/pilkawodna" },
+    { id: "g-17", left: 80.16888909380987, top: 62.57324041499089,   width: 12, aspect: "square", action: "gallery:16" },
+    { id: "g-18", left: 81.96907216494846, top: 53.1940990032113,    width: 12, aspect: "square", action: "gallery:17" },
+    { id: "g-19", left: 77.16686880095303, top: 45.23681215611568,   width: 12, aspect: "square", action: "gallery:18" },
+    { id: "link-tg",   left: 32, top: 78, width: 36, height: 5, aspect: "rect", action: "link:https://t.me/pilkawodna" },
     { id: "link-mail", left: 33.855670103092784, top: 82.89232328350646, width: 36, height: 5, aspect: "rect", action: "link:https://wa.me/48518367836" },
   ],
 };
-
-
 
 /* ============================ */
 
@@ -148,7 +138,7 @@ export default function Poster() {
   const [lbOpen, setLbOpen] = useState(false);
   const [lbIndex, setLbIndex] = useState(0);
 
-  // Редактор хотспотов
+  // Hotspots
   const [hs, setHs] = useState<Record<string, HS[]>>(HS_CONFIG_INIT);
   const [edit, setEdit] = useState(false);
 
@@ -180,7 +170,7 @@ export default function Poster() {
     }
   };
 
-  // src -> (height/width) AR
+  // map: src -> aspectRatio (H/W)
   const [ratios, setRatios] = useState<Record<string, number>>({});
   const onImageLoad = (src: string, img: HTMLImageElement) => {
     if (!img.naturalWidth || !img.naturalHeight) return;
@@ -190,7 +180,7 @@ export default function Poster() {
 
   function Hotspots({ src }: { src: string }) {
     const items = hs[src];
-    const ar = ratios[src]; // height/width
+    const ar = ratios[src];
     if (!items || !items.length) return null;
 
     return (
@@ -255,15 +245,39 @@ export default function Poster() {
     );
   }
 
+  /* ===== Dynamic FAQ section sizing (repeat background) ===== */
+  const FAQ_TOP_PCT = 8; // как и раньше: 8% от высоты одного тайла
+  const faqSectionRef = useRef<HTMLDivElement | null>(null);
+  const faqWrapRef = useRef<HTMLDivElement | null>(null);
+  const [faqTopPx, setFaqTopPx] = useState<number>(0);
+  const [faqMinH, setFaqMinH] = useState<number>(0);
+
+  useLayoutEffect(() => {
+    const recalc = () => {
+      const el = faqSectionRef.current;
+      if (!el) return;
+      const w = el.clientWidth || window.innerWidth;
+      const ar = ratios["/poster/Slice-6-1.png"] ?? 0.5625; // запасной 16:9
+      const baseH = w * ar;                    // высота одного «тайла» фона
+      const top = (FAQ_TOP_PCT / 100) * baseH; // смещение FAQ от верха
+      const bodyH = faqWrapRef.current?.offsetHeight ?? 0;
+      const need = Math.max(baseH, top + bodyH + 24); // + чуть-чуть отступа снизу
+      setFaqTopPx(top);
+      setFaqMinH(need);
+    };
+
+    recalc();
+    window.addEventListener("resize", recalc);
+    return () => window.removeEventListener("resize", recalc);
+  }, [open, ratios]);
+
   return (
     <main>
       {slices.map((s, idx) => {
         if (s.kind === "img") {
-          const imgRef = useRef<HTMLImageElement | null>(null);
           return (
             <section key={idx} className="section relative">
               <img
-                ref={imgRef}
                 src={s.src}
                 alt=""
                 className="slice"
@@ -274,12 +288,27 @@ export default function Poster() {
           );
         }
 
-        // FAQ поверх Slice-6-1
+        // FAQ: фон — это repeating background, высота — динамическая
         return (
-          <section key={idx} className="section relative">
-            <img src={s.src} alt="" className="slice" />
-            <div className="faq-overlay">
-              <div className="faq-wrap">
+          <section
+            key={idx}
+            ref={faqSectionRef}
+            className="section faq-section"
+            style={{
+              backgroundImage: `url(${s.src})`,
+              minHeight: faqMinH ? `${faqMinH}px` : undefined,
+            }}
+          >
+            {/* скрытый preloader, чтобы получить naturalWidth/Height */}
+            <img
+              src={s.src}
+              alt=""
+              style={{ position: "absolute", width: 0, height: 0, opacity: 0, pointerEvents: "none" }}
+              onLoad={(e) => onImageLoad(s.src, e.currentTarget)}
+            />
+
+            <div className="faq-overlay" style={{ top: faqTopPx ? `${faqTopPx}px` : "8%" }}>
+              <div ref={faqWrapRef} className="faq-wrap">
                 {faqData.map((item, i) => {
                   const isOpen = open === i;
                   return (
@@ -287,7 +316,7 @@ export default function Poster() {
                       <button
                         type="button"
                         className="faq-summary"
-                        onClick={() => toggle(i)}
+                        onClick={() => setOpen((p) => (p === i ? -1 : i))}
                       >
                         <span className="faq-title">{item.q}</span>
                         <span className={`faq-sign ${isOpen ? "minus" : "plus"}`} aria-hidden="true" />
@@ -310,10 +339,7 @@ export default function Poster() {
         open={lbOpen}
         index={lbIndex}
         close={() => setLbOpen(false)}
-        // приводим любой формат галереи к строковому src
-        slides={(gallery as any[]).map((g) => ({
-          src: typeof g === "string" ? g : g.full,
-        }))}
+        slides={gallery.map((g) => ({ src: typeof g === "string" ? g : g.full })) as SlideImage[]}
         styles={{
           container: {
             backgroundColor: "rgba(8, 20, 40, 0.22)",
@@ -324,18 +350,22 @@ export default function Poster() {
         }}
       />
 
-
-      {/* Стили (FAQ оставил как у тебя) */}
       <style jsx global>{`
         .section { position: relative; width: 100%; }
         .slice { width: 100%; height: auto; display: block; }
 
-        /* FAQ позиционирование */
+        /* FAQ section turns the slice into a repeating background */
+        .faq-section {
+          background-repeat: repeat-y;
+          background-size: 100% auto;   /* масштаб по ширине, высота автоматом */
+          background-position: top center;
+        }
+
+        /* позиционирование FAQ-блока */
         .faq-overlay {
           position: absolute;
           left: 50%;
           transform: translateX(-50%);
-          top: 5%;
           width: 95%;
           max-width: 720px;
           pointer-events: none;
@@ -373,7 +403,7 @@ export default function Poster() {
           text-transform: uppercase;
           letter-spacing: .2px;
           color: #083b73;
-          font-size: max(16px,min(4.6vw,16px));
+          font-size: max(16px,min(4.6vw,18px));
           font-weight: 800;
         }
         .faq-sign {
@@ -404,11 +434,9 @@ export default function Poster() {
           margin-top: 0px;
           padding: 14px 18px;
           color: #083b73;
-          font-size: clamp(16px, 4.8vw, 19px); /* увеличили только тело */
+          font-size: clamp(16px, 4.8vw, 19px);
           line-height: 1.45;
-          white-space: pre-line;
         }
-        .jsx-edfc7658fa887aac.faq-body { font-size: medium; }
 
         /* Hotspots */
         .hs-layer{ position:absolute; inset:0; pointer-events:none; z-index:5; }
