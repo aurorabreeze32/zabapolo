@@ -40,12 +40,12 @@ const HS_CONFIG_INIT: Record<string, HS[]> = {
   "/poster/Slice-1.png": [
     { id: "g-01", left: 29.09025156350883,  top: 27.44065634034929,  width: 18, aspect: "square", action: "gallery:0" },
     { id: "g-02", left: 52.583736082523096, top: 27.01066751765411,  width: 18, aspect: "square", action: "gallery:1" },
-    { id: "g-03", left: 22.010865843703705, top: 45.75398839522629,  width: 18, aspect: "square", action: "gallery:2" },
-    { id: "g-04", left: 42.30705632112411,  top: 45.79589854509078,  width: 18, aspect: "square", action: "gallery:3" },
-    { id: "g-05", left: 61.61736663042994,  top: 45.85615468452373,  width: 18, aspect: "square", action: "gallery:4" },
-    { id: "g-06", left: 4.142518746622372,  top: 63.99142223788426,  width: 18, aspect: "square", action: "gallery:5" },
+    { id: "g-03", left: 42.81209964722873,  top: 45.75398839522629,  width: 18, aspect: "square", action: "gallery:2" },
+    { id: "g-04", left: 61.72153922947079,  top: 45.663482073411295, width: 18, aspect: "square", action: "gallery:3" },
+    { id: "g-05", left: 22.033899179284084, top: 45.78994644868399,  width: 18, aspect: "square", action: "gallery:4" },
+    { id: "g-06", left: 36.65407428111186,  top: 60.74722777402676,  width: 18, aspect: "square", action: "gallery:5" },
     { id: "g-07", left: 20.575511611360092, top: 62.06756463294061,  width: 18, aspect: "square", action: "gallery:6" },
-    { id: "g-08", left: 37.14383255585791,  top: 60.57602065314697,  width: 18, aspect: "square", action: "gallery:7" },
+    { id: "g-08", left: 4.786361747283664,  top: 63.95263158868394,  width: 18, aspect: "square", action: "gallery:7" },
   ],
 
   "/poster/Slice-2.png": [
@@ -55,9 +55,9 @@ const HS_CONFIG_INIT: Record<string, HS[]> = {
   ],
 
   "/poster/Slice-3.png": [
-    { id: "g-12", left: 22.434102821428038, top: 37.29494457637754,  width: 16, aspect: "square", action: "gallery:11" },
-    { id: "g-13", left: 41.947898100899586, top: 37.79335486378386,  width: 16, aspect: "square", action: "gallery:12" },
-    { id: "g-14", left: 60.37866576222988,  top: 38.375755498460016, width: 16, aspect: "square", action: "gallery:13" },
+    { id: "g-12", left: 42.00267151369533,  top: 37.56344681339225,  width: 16, aspect: "square", action: "gallery:11" },
+    { id: "g-13", left: 59.205218122550605, top: 38.53173417192139,  width: 16, aspect: "square", action: "gallery:12" },
+    { id: "g-14", left: 21.703779381424972, top: 37.97300583024379,  width: 16, aspect: "square", action: "gallery:13" },
   ],
 
   "/poster/Slice-4.png": [
@@ -68,14 +68,15 @@ const HS_CONFIG_INIT: Record<string, HS[]> = {
   "/poster/Slice-5.png": [
     { id: "g-15", left: 32.79745339114472,  top: 2.7301943327838387, width: 12, aspect: "square", action: "gallery:14" },
     { id: "g-16", left: 52.780727617899984, top: 1.718953413026254,  width: 12, aspect: "square", action: "gallery:15" },
-    { id: "g-17", left: 75.54639175257732,  top: 45.06356498350789,  width: 12, aspect: "square", action: "gallery:16" },
+    { id: "g-17", left: 80.16888909380987,  top: 62.57324041499089,  width: 12, aspect: "square", action: "gallery:16" },
     { id: "g-18", left: 81.96907216494846,  top: 53.1940990032113,   width: 12, aspect: "square", action: "gallery:17" },
-    { id: "g-19", left: 79.94036635928826,  top: 62.14061949989182,  width: 12, aspect: "square", action: "gallery:18" },
+    { id: "g-19", left: 77.16686880095303,  top: 45.23681215611568,  width: 12, aspect: "square", action: "gallery:18" },
 
     { id: "link-tg",   left: 32,                 top: 78,                width: 36, height: 5, aspect: "rect", action: "link:https://t.me/USERNAME" },
     { id: "link-mail", left: 33.855670103092784, top: 82.89232328350646, width: 36, height: 5, aspect: "rect", action: "link:mailto:info@zabapolo.pl" },
   ],
 };
+
 
 
 /* ============================ */
