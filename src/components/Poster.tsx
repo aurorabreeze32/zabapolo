@@ -61,8 +61,8 @@ const HS_CONFIG_INIT: Record<string, HS[]> = {
   ],
 
   "/poster/Slice-4.png": [
-    { id: "link-ig", left: 47.1958762886598,   top: 19.925279760331307, width: 32, height: 5, aspect: "rect", action: "link:https://instagram.com/zabapolo" },
-    { id: "link-wa", left: 44.927835051546396, top: 25.27288747907304,  width: 32, height: 5, aspect: "rect", action: "link:https://wa.me/48XXXXXXXXX" },
+    { id: "link-ig", left: 47.1958762886598,   top: 19.925279760331307, width: 32, height: 5, aspect: "rect", action: "link:https://www.instagram.com/staszhitkovsky" },
+    { id: "link-wa", left: 44.927835051546396, top: 25.27288747907304,  width: 32, height: 5, aspect: "rect", action: "link:https://wa.me/48518367836" },
   ],
 
   "/poster/Slice-5.png": [
@@ -72,7 +72,7 @@ const HS_CONFIG_INIT: Record<string, HS[]> = {
     { id: "g-18", left: 81.96907216494846,  top: 53.1940990032113,   width: 12, aspect: "square", action: "gallery:17" },
     { id: "g-19", left: 77.16686880095303,  top: 45.23681215611568,  width: 12, aspect: "square", action: "gallery:18" },
 
-    { id: "link-tg",   left: 32,                 top: 78,                width: 36, height: 5, aspect: "rect", action: "link:https://t.me/USERNAME" },
+    { id: "link-tg",   left: 32,                 top: 78,                width: 36, height: 5, aspect: "rect", action: "link:https://t.me/pilkawodna" },
     { id: "link-mail", left: 33.855670103092784, top: 82.89232328350646, width: 36, height: 5, aspect: "rect", action: "link:mailto:info@zabapolo.pl" },
   ],
 };
